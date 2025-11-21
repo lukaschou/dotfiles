@@ -1,0 +1,7 @@
+[user]
+	name = Lukas Chou
+	email = lukaschou06@outlook.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
