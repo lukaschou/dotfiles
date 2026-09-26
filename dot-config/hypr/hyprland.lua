@@ -20,6 +20,7 @@ hl.monitor({
     mode     = "2560x1440@240",
     position = "0x0",
     scale    = "1",
+    cm       = "hdr",
 })
 
 
@@ -44,7 +45,8 @@ local menu        = "rofi -show drun"
 --
 hl.on("hyprland.start", function () 
   hl.exec_cmd("hyprpaper")
-  hl.exec_cmd("qs -c noctalia-shell")
+  hl.exec_cmd("noctalia")
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
 
 
@@ -256,6 +258,8 @@ local mainMod = "ALT"
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 local closeWindowBind = hl.bind(mainMod .. " + D", hl.dsp.window.close())
+
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ "fullscreen", toggle }))
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
